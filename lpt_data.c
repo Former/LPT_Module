@@ -36,7 +36,7 @@ static int device_release(struct inode *inode, struct file *file)
 
 static ssize_t device_read(struct file* a_Filp, char* a_Buffer, size_t a_Length, loff_t* a_Offset)
 {	
-	return sprintf(a_Buffer, a_Length, "Last write data: %x", s_LastWriteData);
+	return snprintf(a_Buffer, a_Length, "Last write data: %x", s_LastWriteData);
 }
 
 static ssize_t device_write(struct file* a_Filp, const char* a_Buff, size_t a_Len, loff_t* a_Off)
@@ -69,7 +69,8 @@ int init_module(void)
 
 void cleanup_module(void)
 {
-	int ret = unregister_chrdev(Major, DEVICE_NAME);
-	if (ret < 0)
-		printk(PRINTK_PREFIX"Error in unregister_chrdev: %d\n", ret);
+	unregister_chrdev(s_VerMajor, DEVICE_NAME);
+//	int ret = unregister_chrdev(s_VerMajor, DEVICE_NAME);
+//	if (ret < 0)
+//		printk(PRINTK_PREFIX"Error in unregister_chrdev: %d\n", ret);
 }
