@@ -12,7 +12,7 @@ MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);
 MODULE_SUPPORTED_DEVICE(DEVICE_NAME);
 
-static int s_VerMajor = 0;
+static const int s_VerMajor = 2653;
 static int s_Device_Open = 0;
 static unsigned char s_LastWriteData = 0;
 
@@ -56,12 +56,12 @@ int init_module(void)
 		.release 	= device_release
 	};
 
-	s_VerMajor = register_chrdev(0, DEVICE_NAME, &fops);
+	int ret = register_chrdev(s_VerMajor, DEVICE_NAME, &fops);
 
-	if (s_VerMajor < 0)
+	if (ret != 0)
 	{
-		printk(PRINTK_PREFIX"Registering the character device failed with %d\n", s_VerMajor);
-		return s_VerMajor;
+		printk(PRINTK_PREFIX"Registering the character device failed with %d\n", ret);
+		return ret;
 	}
 	
 	return 0;

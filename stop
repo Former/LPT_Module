@@ -1,0 +1,4 @@
+#!/bin/sh
+rm /dev/lpt_data
+rmmod lpt_data
+
