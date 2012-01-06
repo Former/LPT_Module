@@ -1,0 +1,1 @@
+cmd_/home/alexei/CurProject/LPT_Module/lpt_data.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-2.6.32-5-common/scripts/module-common.lds --build-id -o /home/alexei/CurProject/LPT_Module/lpt_data.ko /home/alexei/CurProject/LPT_Module/lpt_data.o /home/alexei/CurProject/LPT_Module/lpt_data.mod.o
