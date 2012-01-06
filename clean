@@ -1,0 +1,12 @@
+#!/bin/sh
+rm lpt_data.ko
+rm lpt_data.mod.c
+rm lpt_data.mod.o
+rm lpt_data.o
+rm Module.symvers
+rm modules.order
+rm .lpt_data.o.cmd
+rm .lpt_data.mod.o.cmd
+rm .lpt_data.ko.cmd
+rm .tmp_versions/lpt_data.mod
+rmdir .tmp_versions
