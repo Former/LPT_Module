@@ -41,8 +41,15 @@ static ssize_t device_read(struct file* a_Filp, char* a_Buffer, size_t a_Length,
 
 static ssize_t device_write(struct file* a_Filp, const char* a_Buff, size_t a_Len, loff_t* a_Off)
 {
-	printk(PRINTK_PREFIX"Write - %s\n", a_Buff);
-	s_LastWriteData = *a_Buff;
+	const int lpt_port = 0x378;
+	
+	for (int i = 0; i < a_Len; i++)
+	{
+		char curValue = a_Buff[i];
+		outb(curValue, lpt_port);
+		s_LastWriteData = curValue;
+	}
+	
 	return a_Len;
 }
 
