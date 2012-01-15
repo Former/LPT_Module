@@ -3,7 +3,7 @@
 #include <linux/fs.h>
 #include <asm/io.h>
 
-#define DRIVER_AUTHOR	"Alexei Bezborodov <AlexeiBv@narad.ru>"
+#define DRIVER_AUTHOR	"Alexei Bezborodov <AlexeiBv@yandex.ru>"
 #define DRIVER_DESC		"A sample LPT driver"
 #define DEVICE_NAME 	"lpt_data" // will be in /proc/devices  
 #define PRINTK_PREFIX	"lpt_data: "
