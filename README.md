@@ -1,17 +1,17 @@
-# Install (Debian/Ubuntu):
+### Install (Debian/Ubuntu):
 		sudo apt-get install linux-headers-`uname -r`
 
-# Run build:
+### Run build:
 		./run-make
 
-# Start module:
+### Start module:
 		./start
 
-# Stop module:
+### Stop module:
 		./stop
 
-# Clean (delete all bin files):
+### Clean (delete all bin files):
 		./clean
 
-# Using:
+### Using:
 see examples/TestLpt.cpp
