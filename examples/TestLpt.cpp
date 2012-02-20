@@ -16,13 +16,30 @@ int main(int a_ArgCount, char* a_ArgValue[])
 		return -1;
 	}
 	
-	for(int i = 0; i < 1000; i++)
-	{
-		char wBuf = 0xFF;
+	char buf[] = {0x1, 0x5, 0x4, 0x6, 0x2, 0xA, 0x8, 0x9};
+	//char buf[] = {0x5, 0x6, 0xA, 0x9};
+	//char buf[] = {0x1, 0x4, 0x2, 0x8};
+	
+	for (int k = 0; k < 100; k++)
+	for(int i = 0; i < 2000 ; i++)
+	{		
+		const char signal = 1 << 4;
+		
+		bool rotate = k % 2;
+		int bufInd = rotate ? (i % sizeof(buf)): (sizeof(buf) - 1 - i % sizeof(buf));
+		char wBuf = signal | buf[bufInd];
+	//	char wBuf = (0xFF);
+	//	if (i % 3 == 0)
+	//		wBuf = 0;
+
 		write(fd, &wBuf, 1);
-		printf("Write %x\n", wBuf);
-		sleep(1);
+		//printf("Write %X\n", wBuf);
+		int sl = 50000;
+		usleep(sl * ((sizeof(buf) == 8) ? 1 : 2));
+		//usleep(100000);
 	}
+	char wBuf = 0;
+	write(fd, &wBuf, 1);
 	close(fd);
 	return 0;
 }
