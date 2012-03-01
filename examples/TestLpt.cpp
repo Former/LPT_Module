@@ -26,18 +26,15 @@ int main(int a_ArgCount, char* a_ArgValue[])
 		const char signal = 1 << 4;
 		
 		bool rotate = k % 2;
-		int bufInd = rotate ? (i % sizeof(buf)): (sizeof(buf) - 1 - i % sizeof(buf));
+		int bufInd = rotate ? (i % sizeof(buf)) : (sizeof(buf) - 1 - i % sizeof(buf));
 		char wBuf = signal | buf[bufInd];
-	//	char wBuf = (0xFF);
-	//	if (i % 3 == 0)
-	//		wBuf = 0;
 
 		write(fd, &wBuf, 1);
-		//printf("Write %X\n", wBuf);
 		int sl = 50000;
 		usleep(sl * ((sizeof(buf) == 8) ? 1 : 2));
-		//usleep(100000);
 	}
+
+	// Clear output
 	char wBuf = 0;
 	write(fd, &wBuf, 1);
 	close(fd);
