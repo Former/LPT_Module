@@ -5,10 +5,10 @@
 		./run-make
 
 ### Start module:
-		./start
+		sudo ./start
 
 ### Stop module:
-		./stop
+		sudo ./stop
 
 ### Clean (delete all bin files):
 		./clean
