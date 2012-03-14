@@ -79,7 +79,4 @@ int init_module(void)
 void cleanup_module(void)
 {
 	unregister_chrdev(s_VerMajor, DEVICE_NAME);
-//	int ret = unregister_chrdev(s_VerMajor, DEVICE_NAME);
-//	if (ret < 0)
-//		printk(PRINTK_PREFIX"Error in unregister_chrdev: %d\n", ret);
 }
